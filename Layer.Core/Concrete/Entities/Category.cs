@@ -1,4 +1,4 @@
-﻿using Layer.Core.Abstract;
+﻿using Layer.Core.Abstract.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
