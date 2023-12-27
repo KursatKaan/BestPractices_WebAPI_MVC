@@ -10,11 +10,11 @@ namespace Layer.Core.Abstract.Services
     public interface IService<T> where T : class
     {
         Task<T> GetByIdAsync(int id);
-        IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
+        Task<IEnumerable<T>> GetAllAsync();
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
-        Task AddAsync(T entity);
-        Task AddRangeAsync(IEnumerable<T> entities);
+        Task<T> AddAsync(T entity);
+        Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
         Task RemoveRangeAsync(IEnumerable<T> entities);

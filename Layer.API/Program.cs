@@ -4,6 +4,8 @@ using Layer.Core.Abstract.UnitOfWorks;
 using Layer.Repository;
 using Layer.Repository.Repositories;
 using Layer.Repository.UnitOfWorks;
+using Layer.Service.Mapping;
+using Layer.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -18,7 +20,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-//builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+builder.Services.AddAutoMapper(typeof(MapProfile));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
