@@ -10,7 +10,7 @@ namespace Layer.Repository.Repositories
         {
         }
 
-        public async Task<List<Product>> GetProductsWithCategory()
+        public async Task<List<Product>> GetProductsWithCategoryAsync()
         {
             //Eager Loading
             return await _context.Products.Include(x=> x.Category).ToListAsync();
