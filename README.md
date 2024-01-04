@@ -11,7 +11,7 @@ Service katmanında **Validations** klasörü oluşturup içerisine istediğimiz
 
 Oluşturduğumuz **ModelDto Validator** sınıfına **AbstractValidator<model>** sınıfını miras alıyoruz ve sınıfta oluşturduğumuz constructor içerisine istediğimiz validasyon kurallarını yazıyoruz.
 
-![Validator Folder](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/346febda-9c57-4b3b-a803-56377d16dbad)
+![Validation Rules](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/45368a9d-cda7-4acb-85dd-bc2868d360af)
 
 Belirttiğimiz kuralların uygulanacağı uygulamanın katmanında (Api, MVC vb.) **Filters** Klosörü oluşturup içerisinde **ValidateFilterAttribute** sınıfı oluşturuyoruz.
 
