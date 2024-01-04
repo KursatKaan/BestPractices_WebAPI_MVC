@@ -1,6 +1,7 @@
 ﻿using Layer.Core.Abstract.Repositories;
 using Layer.Core.Abstract.Services;
 using Layer.Core.Abstract.UnitOfWorks;
+using Layer.Service.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -44,7 +45,13 @@ namespace Layer.Service.Services
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _repository.GetByIdAsync(id);
+            var hasProduct = await _repository.GetByIdAsync(id);
+
+            if (hasProduct == null)
+            {
+                throw new NotFoundException($"{typeof(T).Name} ({id}) not found"); //404, NotFoundException hatasını fırlattık.
+            }
+            return hasProduct;
         }
 
         public async Task RemoveAsync(T entity)

@@ -1,4 +1,5 @@
-﻿using Layer.Core.Abstract.Services;
+﻿using Layer.API.Filters;
+using Layer.Core.Abstract.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;

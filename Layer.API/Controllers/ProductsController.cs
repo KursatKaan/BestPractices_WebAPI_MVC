@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
+using Layer.API.Filters;
 using Layer.Core.Abstract.DTO_s;
 using Layer.Core.Abstract.Services;
 using Layer.Core.Concrete.DTO_s;
 using Layer.Core.Concrete.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Layer.API.Controllers
 {
+    [ServiceFilter(typeof(NotFoundFilter<Product>))]
     public class ProductsController : CustomBaseController
     {
         private readonly IMapper _mapper;
@@ -22,7 +23,7 @@ namespace Layer.API.Controllers
 
         ///  GET: api/products/GetProductsWithCategory
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetProductsWithCategoryAsync() 
+        public async Task<IActionResult> GetProductsWithCategoryAsync()
         {
             return CreateActionResult(await _productService.GetProductsWithCategoryAsync());
         }

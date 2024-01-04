@@ -1,4 +1,7 @@
-﻿using Layer.Core.Abstract.Repositories;
+﻿using FluentValidation.AspNetCore;
+using Layer.API.Filters;
+using Layer.API.Middlewares;
+using Layer.Core.Abstract.Repositories;
 using Layer.Core.Abstract.Services;
 using Layer.Core.Abstract.UnitOfWorks;
 using Layer.Repository;
@@ -6,6 +9,8 @@ using Layer.Repository.Repositories;
 using Layer.Repository.UnitOfWorks;
 using Layer.Service.Mapping;
 using Layer.Service.Services;
+using Layer.Service.Validations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -13,10 +18,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+// Fluent Validation
+builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>());
+
+// Remove Default API Fluent Validation
+builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter=true); //Varsayılan model bastırıldı.
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -53,6 +65,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomException(); //Kendi oluşturduğumuz hata middleware'si.
 
 app.UseAuthorization();
 
