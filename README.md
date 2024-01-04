@@ -1,6 +1,13 @@
 # AspNetCore_WebAPI_NLayer
 
 ---
+#Fluent Validation
+Fluent Validation, İş nesnelerimiz için doğrulama kuralları oluşturmak amacıyla akıcı bir arabirim ve lambda ifadeleri kullanan küçük bir .NET doğrulama kütüphanesidir
+FluentValidation ve benzeri ürünlerin kullanılması, verilerin doğru şekilde yani verilerin oluştururken konulmuş kısıtlamaları sağlayarak kurallara uyumlu halde olmasını ve kullanıcı ya da sistem kaynaklı hataların oluşmasını engeller.
+
+Service katmanında **Validations** klasörü ol
+
+---
 
 # Global Exception Handler Middleware (Hata Tutucu)
 Bu Middleware, merkezi olarak exceptionlarımızı yönetebilmemizi sağlar. Her bir methodu try catch ve throw blockları ile exceptionları handle etmeye çalışmak yerine, 
