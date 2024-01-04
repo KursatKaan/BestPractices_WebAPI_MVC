@@ -7,7 +7,8 @@ Bu Middleware, merkezi olarak exceptionlarımızı yönetebilmemizi sağlar. Her
 her bir request ve response'yi handle eden ve tüm exceptionları tek bir yerden yöneten bir yapıdır.
 Örneğin, uygulama içinde herhangi bir kodda exception throw ettiğimizde tüm methodların catch blocklarında log methodunu çağırmak yerine, Middlewarede bir kez log mekanizmamızı oluşturuyoruz.
 
-Service katmanında **Exceptions** klasörü oluşturuyoruz. 
+Service katmanında **Exceptions** klasörü oluşturuyoruz.
+
 ![ExceptionsFolder](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/866072fb-5fc3-4799-a84f-cf7ab3444e34)
 
 Bu klasör içerisine istediğimiz hata tiplerine göre isim vererek **özel exception sınıfları** oluşturuyoruz ve bu oluşturduğumuz sınıflara **Exception** sınıfını miras alıyoruz.
