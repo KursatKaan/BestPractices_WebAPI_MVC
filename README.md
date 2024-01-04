@@ -1,11 +1,37 @@
 # AspNetCore_WebAPI_NLayer
 
 ---
-#Fluent Validation
+# Fluent Validation
 Fluent Validation, İş nesnelerimiz için doğrulama kuralları oluşturmak amacıyla akıcı bir arabirim ve lambda ifadeleri kullanan küçük bir .NET doğrulama kütüphanesidir
 FluentValidation ve benzeri ürünlerin kullanılması, verilerin doğru şekilde yani verilerin oluştururken konulmuş kısıtlamaları sağlayarak kurallara uyumlu halde olmasını ve kullanıcı ya da sistem kaynaklı hataların oluşmasını engeller.
 
-Service katmanında **Validations** klasörü ol
+Service katmanında **Validations** klasörü oluşturup içerisine istediğimiz modelin DTO'suna göre **ModelDto Validator** sınıfı oluşturuyoruz.
+
+![Validator Folder](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/0e065edf-c3c6-44fc-bd4b-d36ca695a04f)
+
+Oluşturduğumuz **ModelDto Validator** sınıfına **AbstractValidator<model>** sınıfını miras alıyoruz ve sınıfta oluşturduğumuz constructor içerisine istediğimiz validasyon kurallarını yazıyoruz.
+
+![Validator Folder](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/346febda-9c57-4b3b-a803-56377d16dbad)
+
+Belirttiğimiz kuralların uygulanacağı uygulamanın katmanında (Api, MVC vb.) **Filters** Klosörü oluşturup içerisinde **ValidateFilterAttribute** sınıfı oluşturuyoruz.
+
+![ValidateFilterAttribute Class](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/f9e1d1ea-911c-4f34-bf4b-eedfa0fb57d3)
+
+Oluşturduğumuz **ValidateFilterAttribute** sınıfına **ActionFilterAttribute** sınıfını miras alıyoruz.
+
+![ActionFilterAttribute Kalıtım](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/e4f9f39b-094c-4a79-ab6c-303f782bf04d)
+
+Oluşturduğumuz **ValidateFilterAttribute** sınıfı içerisine **OnActionExecuting** metodunu override ediyoruz ve metot içerisinde model durumunu kontrol edip hata olması durumunda istediğimiz hata modelini ve hata kodunu döndürüyoruz.
+
+![OnActionExcetuting Method](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/7ac7e1c5-e565-45ef-ad28-eb8ad7cdfe59)
+
+Bu validasyon kurallarını her controllerde tek tek belirtmek yerine tüm projede geçerli olması için Program.cs'de belirtiyoruz.
+
+![Program cs](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/51af7922-d0cb-47a0-b89e-a4f8486cce14)
+
+API katmanında bizim kendi oluşturduğumuz özel Validasyon kontrolünü geçerli kılabilmek için **Default** olarak geçerli olan validasyon kontrolünü bastırarak etkisiz kılıyoruz.
+
+![Remove API Default Validation](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/0cfa3147-e4a1-4922-8366-d2551885f390)
 
 ---
 
@@ -18,7 +44,7 @@ Service katmanında **Exceptions** klasörü oluşturuyoruz.
 
 ![ExceptionsFolder](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/866072fb-5fc3-4799-a84f-cf7ab3444e34)
 
-Bu klasör içerisine istediğimiz hata tiplerine göre isim vererek **özel exception sınıfları** oluşturuyoruz ve bu oluşturduğumuz sınıflara **Exception** sınıfını miras alıyoruz.
+Oluşturduğumuz **Exceptions** klasörü içerisine istediğimiz hata tiplerine göre isim vererek **Özel Exception Sınıfları** oluşturuyoruz ve bu oluşturduğumuz sınıflara **Exception** sınıfını miras alıyoruz.
 
 #### NotFound (404) hatası döndürmesi için özel exception sınıfı:
 ![NotFoundException](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/dbcd797d-2489-46b2-ba08-1d2bc0941e33)
