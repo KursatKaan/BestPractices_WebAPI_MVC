@@ -102,3 +102,21 @@ Ve yine aynı sebepten dolayı kullanırken de **[Service Filter]** Attributesi 
 ![ServiceFilter Use](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/d696969a-8b69-4867-808d-8224a44bd40f)
 
 ---
+
+# AutoFac (IoC Container)
+**AutoFac**, .NET tabanlı framework için geliştirilmiş **IOC** *(Inversion Of Control)* container’dır. Hem bağımlılıklarımızı yöneten hem de **AOP** *(Aspect-Oriented Programming)* destekleyen ve bu işleri çok efektif bir şekilde yapabilen bir kütüphanedir.
+
+### IoC Container nedir ?
+Oluşturulacak olan nesnelerin yaşam döngüsünün yönetilmesidir. Yani belirlenen koşullarda, herbir request için **Singelton** *(Tekil)* şekilde ilgili nesne örneğinin bizim adımıza üretilmesidir. Bu bize kolaylık ve kodda gözle görülür bir sadelik getirir.
+
+### AOP nedir ?
+Business katmanında sürekli olarak tekrar eden Logging , Authorization , Exception Handling , Cache gibi her aşamada kontrol ettiğimiz durumları modüler yapıya kavuşturup tek yerden yönetilmesini amaçlar.
+
+### Varsayılan Built-in DI Container'den farkları;
+
+**Built-in DI Container** kullanarak Constructor ve Method enjekte edebiliyoruz.
+
+**AutoFac** ile Constructor, Method ve ekstra olarak Property enjekte edebilirken ayrıca **Dinamik** olarak servis enjekte edebiliriz.
+*(Örn: Sonu X ile biten 10 adet servisimiz olsun, Biz Sonu X ile biten bütün Interfaceleri tek satırda enjekte edebiliyoruz.)*
+
+---
