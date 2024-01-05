@@ -119,4 +119,29 @@ Business katmanında sürekli olarak tekrar eden Logging , Authorization , Excep
 **AutoFac** ile Constructor, Method ve ekstra olarak Property enjekte edebilirken ayrıca **Dinamik** olarak servis enjekte edebiliriz.
 *(Örn: Sonu X ile biten 10 adet servisimiz olsun, Biz Sonu X ile biten bütün Interfaceleri tek satırda enjekte edebiliyoruz.)*
 
+
+Uygulama katmanında program.cs'de **UseServiceProviderFactory** Metodunu **AutofacServiceProviderFactory()** sınıfı ile birlikte ekliyoruz.
+
+![Use Service Provider Factory](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/82952bf0-5783-44c0-a8fd-533411f24924)
+
+Uygulama katmanında **Modules** klasörü oluşturup içerisine IoC Containerimiz olacak **RepoServiceModule** isminde sınıf oluşturuyoruz.
+
+![Create Modules Folder](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/9a72b74d-b732-4975-9354-e6f5420f566a)
+
+Oluşturduğumuz **RepoServiceModule** sınıfına **Module** sınıfını miras alıp **Load** metodunu override ediyoruz.
+
+![RepoServiceModule Class](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/7f383174-4acd-4b66-b1e9-7412cf4f46b9)
+
+Load metodu içerisine bağımlılıkları ekliyoruz.
+
+![Save Dependencies](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/d5d10857-da68-45fb-a415-33c88710e9c4)
+
+IoC Container'e eklediğimiz bağımlılıkları Program.cs'den kaldırıyoruz.
+
+![Remove Program cs](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/2844faf8-8e49-4788-976f-ef7ff036fba5)
+
+Son olarak Program.cs'ye oluşturduğumuz **IoC Container** *(RepoServiceModule)* ekliyoruz.
+
+![Save ContainerModul](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/3b872e6e-3d61-4d90-a307-9a202c3d56be)
+
 ---
