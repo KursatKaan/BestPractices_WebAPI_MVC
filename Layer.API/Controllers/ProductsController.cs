@@ -39,6 +39,7 @@ namespace Layer.API.Controllers
             return CreateActionResult(CustomResponseDto<List<ProductDto>>.Success(200, productsDtos)); //CreateActionResult metodu ile sonucu metoda bagladık.
         }
 
+        
         /// GET: api/products/id
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -49,7 +50,7 @@ namespace Layer.API.Controllers
         }
 
         /// CREATE: api/products
-        [HttpPost()]
+        [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto)
         {
             var product = await _productService.AddAsync(_mapper.Map<Product>(productDto));

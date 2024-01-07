@@ -20,8 +20,14 @@ namespace Layer.API.Filters
         // Action filtresi çalıştırıldığında bu metot devreye girer.
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var idValue = context.ActionArguments.Values.FirstOrDefault(); // İstek içindeki parametre değerlerini (Id) içeren koleksiyondan ilk değeri al.
+            if (context.HttpContext.Request.Method == "POST")
+            {
+                await next.Invoke();
+                return;
+            }
 
+            var idValue = context.ActionArguments.Values.FirstOrDefault(); // İstek içindeki parametre değerlerini (Id) içeren koleksiyondan ilk değeri al.
+            
             if (idValue == null)
             {
                 await next.Invoke(); // Eğer parametre değeri (Id) bulunamazsa, bir sonraki adıma geç.
@@ -31,9 +37,9 @@ namespace Layer.API.Filters
             var id = (int)idValue; // Parametre değeri (Id) varsa gelen bu parametre değerini integar'a dönüştürüp "id" değişkenine ata.
             var anyEntity = await _service.AnyAsync(x => x.Id == id); // Parametre (Id) ile ilgili varlık (entity) mevcut mu diye servis üzerinden kontrol yap ve "anyEntity" değişkenine ata.
 
-            if (anyEntity == null)
+            if (anyEntity)
             {
-                await next.Invoke(); // Eğer entity bulunamazsa, bir sonraki adıma geç.
+                await next.Invoke(); // Eğer entity varsa, bir sonraki adıma geç.
                 return;
             }
 
