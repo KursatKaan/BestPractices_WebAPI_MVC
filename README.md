@@ -91,7 +91,7 @@ Bu sınıfa **IAsyncActionFilter** Interface'sini miras alıyoruz ve bu Interfac
 
 **OnActionExecutionAsync** metodu içerisinde, gelen parametreye göre kontrolleri sağlayıp istediğimiz hata durumunu ve mesajını döndürüyoruz.
 
-![Parameter Controller](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/912c2bff-c032-49c9-b06c-8fdf22053716)
+![Parameter Control](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/c5ce9ae6-6110-45d2-b203-39534e8a24e1)
 
 Bu oluşturduğumuz **NotFoundFilter** içerisinde Constructor ile parametre aldığından dolayı Program.cs'ye bildiriyoruz.
 
