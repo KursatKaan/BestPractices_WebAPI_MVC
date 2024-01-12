@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Layer.Caching;
 using Layer.Core.Abstract.Repositories;
 using Layer.Core.Abstract.Services;
 using Layer.Core.Abstract.UnitOfWorks;
@@ -37,6 +38,8 @@ namespace Layer.API.Modules
                 .Where(x => x.Name.EndsWith("Service")) // Sonu "Service" ile biten sınıfları al.
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<ProductServiceWithCaching>().As<IProductService>().InstancePerLifetimeScope();
         }
     }
 }
