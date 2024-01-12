@@ -145,3 +145,43 @@ Son olarak Program.cs'ye oluşturduğumuz **IoC Container** *(RepoServiceModule)
 ![Save ContainerModul](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/3b872e6e-3d61-4d90-a307-9a202c3d56be)
 
 ---
+
+# In-Memory-Caching
+
+ASP.NET Core'da in-memory cache kullanarak verileri geçici bir süre boyunca bellekte saklamak oldukça yaygındır. Son kullanıcıya nadiren güncellenen veya geniş aralıklarla tazelenen verileri her seferinde veritabanı üzerinden elde edetmek yerine önbelleğe alınmış veriyi sunarız.
+
+Biz bu projede sadece Product için in-memory-cache işlemi kullanacağız.
+
+In-Memory Cache özelliğini kullanabilmek için **MemoryCache** modülünü Program.cs'ye service olarak ekliyoruz.
+
+![Add Cache Module Program cs](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/a79ab143-2dd4-486a-8ee4-dd05971af4ab)
+
+Caching katmanında Product modeli için **ProductServiceCaching** sınıfı oluşturuyoruz ve **IProductService** interface'sini miras alıyoruz.
+
+![ProductServiceWithCaching Class](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/d1501e33-7166-4679-a252-ff2bf434d81b)
+
+Tüm productları tutacağımız bir **CacheKey** belirliyoruz ve kullanacağımız *(IMapper, IMemoryCache, IProductRepository, IUnitOfWork)* interfacelerini ekliyoruz.
+
+![Add Interfaces](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/a089d556-e2ae-45ca-9945-4a3d1f314a5d)
+
+Constructor oluşturuyoruz ve Interface'lerimizi bu constructorda tanımlıyoruz.
+
+![Add Constructor](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/12dd2db7-a9e3-4b57-a4e6-38d16ae3b5c1)
+
+Aynı constructor içerisinde eğer önbellekte ürünler yoksa, veritabanından çekip önbelleğe alacağı **if koşulunu** ekliyoruz.
+
+![Caching](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/99c4fd1f-dc36-4f44-9808-978d7a6d5aad)
+
+İşlemlerimizi kolaylaştırmak için tüm ürünleri önnbelleğe alma işlemini yapacak **CacheAllProduct** isminde metot oluşturuyoruz. 
+
+![CacheAllProduct](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/caaddf31-92ef-4902-b340-a0cf2f2d8b80)
+
+Önbelleğe alma işlemi uygulayacağımız metotlarda *(Ekleme, Silme, Güncelleme)* oluşturduğumuz **CacheAllProducts** metodunu kullanıyoruz. 
+
+![Save Cache](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/6e072e91-0c7f-46fa-b6af-8d11b56204c8)
+
+Tüm ürünleri önbellekten alma işlemini **(_memoryCache.Get<List<Model>>(CacheProductKey)** ile sağlıyoruz.
+
+![Get From Cache](https://github.com/KursatKaan/Asp.NetCore_Web_Api_NLayer/assets/140398297/9f886ab6-b217-4db7-8962-bb19c7625506)
+
+---
