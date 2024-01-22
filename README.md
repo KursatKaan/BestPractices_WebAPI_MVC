@@ -1,6 +1,52 @@
-# AspNetCore_WebAPI_NLayer
+# SOA ve REUSABILITY
+Öncelikle Web API mantığını kavramamız için SOA ve Reusability kavramlarını bilmemiz gerekir. 
+
+## Reusability *(Yazılımın tekrar kullanımı)*
+Reusability, bir yazılım sisteminin geliştirilmesinde kullanılan bilginin ve ürünlerin, aynı şekilde veya ufak değişikliklerle yeni yazılımda kullanılması olarak tanımlanabilir. Yazılımlarda yeniden kullanılabilirlik artırıldığında düşük iş gücüyle daha büyük işler yapmak ve dolayısıyla hızlı geliştirilen, düşük maliyetli yazılımlar elde etmek mümkün olacaktır.
+
+Yazılımcılar Reusibilty'i daha iyi bir seviyeye getirebilmek için sürekli olarak yeni yöntemler geliştirmişlerdir. 
+#### 1- Unstructured Programming (Yapılandırılmamış Programlama)
+#### 2- Procedural Programming (Prosedürel Programlama)
+#### 3- [OOP] Object Oriented Programming (Nesne yönelimli programlama)
+#### 4- Layered Architecture (Katmanlı Mimari)
+#### 5- [SOA] Service Oriented Architecture (Servis Odaklı Mimari)
+Geldiğimiz dönemde son olarak da SOA reusibilty'i en yüksek seviyede uygulamamızı sağlamaktadır.
+
+## SOA *(Servis Odaklı Mimari)*
+SOA, sistemlerin tekonoloji bağımsız bir şekilde ve tek noktadan sürdürülebilir bir sistem inşa edilmesine odaklanır. Daha iyi anlayabilmemiz için örneklendirerek anlatacağım.
+
+Yöneticinizin bir Web projesi istediğini düşünelim, yani sadece Web'de çalışacak bir proje. Biz de bu isteğe uygun bir Web Projesi yaptık diyelim.
+
+![WebProject](https://github.com/KursatKaan/AspNetCore_NTier_WebAPI_BestPractices/assets/140398297/cfecfc80-ae25-4a14-a49a-f7d4ab396483)
+
+Sonrasında yöneticiniz gelip müşterinin bir de Android ve IOS ortamları içinde istediğini iletti. Bu durumda bizim **Business** ve **DataAccess** katmanlarını tekrar Mobil Proje için de yazmamız gerekir. Ayrıca Mobil veya Web projemizin herhangi birinde bir değişiklik yapmamız gerektiğinde sürekli olarak bu değişikliği diğer projeyede taşımamız gerekecek. Ancak bu hiç de sürdürülebilir ve mantıklı bir durum değildir.
+
+![Web-Mobile Project](https://github.com/KursatKaan/AspNetCore_NTier_WebAPI_BestPractices/assets/140398297/361414f7-8122-4e50-93e3-57eb5aaf7cbb)
+
+İşte bu durumda biz tek bir ana servis oluşturup Mobil ve Web projelerinin arayüzlerine tek bir noktadan servis sağlıyoruz. Bu sayede herhangi bir değişiklik sadece tek bir noktadan olacak ve bütün arayüzlere yansıyacak. ayrıca servisimizi kodladığımız dil ile arayüzlerin dilleri birbirinden tamamen bağımsız olabilir.
+
+![Service Project](https://github.com/KursatKaan/AspNetCore_NTier_WebAPI_BestPractices/assets/140398297/7fe70fba-ddcf-4f15-95bd-60f4c38bac2e)
+
+## SOA Technologies
+#### 1- .Net Remoting
+#### 2- Web Services (xml)
+#### 3- WCF (Windows Communication Foundation)
+#### 4- RESTful Services (Web APIs)
 
 ---
+
+# REST (Representational State Transfer)
+#### Türkçe açılımı Temsili Durum Aktarımı.
+#### Arayüzü olan her cihaz için servis sağlar.
+#### Implementasyonu kolaydır.
+#### JSON formatında küçük boyutlu veri döndürür.
+#### HTTP'nin tüm metotlarını kullanabilir. (GET, POST, PUT, DELETE)
+#### Web API'ler RESTful servisleridir.
+
+![RESTful API](https://github.com/KursatKaan/AspNetCore_NTier_WebAPI_BestPractices/assets/140398297/9c2ed142-5834-4db2-88dd-2157327bbdc3)
+
+---
+
 # Fluent Validation
 Fluent Validation, İş nesnelerimiz için doğrulama kuralları oluşturmak amacıyla akıcı bir arabirim ve lambda ifadeleri kullanan küçük bir .NET doğrulama kütüphanesidir
 FluentValidation ve benzeri ürünlerin kullanılması, verilerin doğru şekilde yani verilerin oluştururken konulmuş kısıtlamaları sağlayarak kurallara uyumlu halde olmasını ve kullanıcı ya da sistem kaynaklı hataların oluşmasını engeller.
