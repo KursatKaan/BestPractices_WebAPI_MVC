@@ -65,7 +65,7 @@ namespace Layer.Caching
         public Task<bool> AnyAsync(Expression<Func<Product, bool>> expression)
         {
             // Tüm ürünleri önbellekten al, belirtilen koşula uyan ürün var mı kontrol et
-            return Task.FromResult(_memoryCache.Get<List<Product>>(CacheProductKey).Where(expression.Compile()).Any()); 
+            return Task.FromResult(_memoryCache.Get<List<Product>>(CacheProductKey).Where(expression.Compile()).Any());
         }
 
         public Task<IEnumerable<Product>> GetAllAsync()

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Layer.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231225164834_initial")]
+    [Migration("20240129220920_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,7 @@ namespace Layer.Repository.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2023, 12, 25, 19, 48, 34, 536, DateTimeKind.Local).AddTicks(8613),
+                            CreatedDate = new DateTime(2024, 1, 30, 1, 9, 20, 269, DateTimeKind.Local).AddTicks(7477),
                             Price = 100m,
                             ProductName = "Kalem 1",
                             Stock = 20
@@ -116,7 +116,7 @@ namespace Layer.Repository.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2023, 12, 25, 19, 48, 34, 536, DateTimeKind.Local).AddTicks(8622),
+                            CreatedDate = new DateTime(2024, 1, 30, 1, 9, 20, 269, DateTimeKind.Local).AddTicks(7487),
                             Price = 200m,
                             ProductName = "Kalem 2",
                             Stock = 20
@@ -125,7 +125,7 @@ namespace Layer.Repository.Migrations
                         {
                             Id = 3,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2023, 12, 25, 19, 48, 34, 536, DateTimeKind.Local).AddTicks(8623),
+                            CreatedDate = new DateTime(2024, 1, 30, 1, 9, 20, 269, DateTimeKind.Local).AddTicks(7488),
                             Price = 300m,
                             ProductName = "Kalem 3",
                             Stock = 20
@@ -134,7 +134,7 @@ namespace Layer.Repository.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 12, 25, 19, 48, 34, 536, DateTimeKind.Local).AddTicks(8626),
+                            CreatedDate = new DateTime(2024, 1, 30, 1, 9, 20, 269, DateTimeKind.Local).AddTicks(7489),
                             Price = 400m,
                             ProductName = "Kitap 1",
                             Stock = 10
@@ -143,7 +143,7 @@ namespace Layer.Repository.Migrations
                         {
                             Id = 5,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 12, 25, 19, 48, 34, 536, DateTimeKind.Local).AddTicks(8628),
+                            CreatedDate = new DateTime(2024, 1, 30, 1, 9, 20, 269, DateTimeKind.Local).AddTicks(7491),
                             Price = 300m,
                             ProductName = "Kitap 2",
                             Stock = 40
