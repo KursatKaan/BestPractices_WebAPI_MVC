@@ -1,3 +1,6 @@
+# API-MVC
+![API-MVC](https://github.com/KursatKaan/AspNetCore_NTier_WebAPI_BestPractices/assets/140398297/72576a95-52f1-4b85-a6e8-2914c8f173cb)
+
 # SOA ve REUSABILITY
 Öncelikle Web API mantığını kavramamız için SOA ve Reusability kavramlarını bilmemiz gerekir. 
 
