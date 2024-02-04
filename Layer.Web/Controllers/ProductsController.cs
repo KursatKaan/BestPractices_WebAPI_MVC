@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using Layer.Core.Abstract.Services;
-using Layer.Core.Concrete.DTO_s;
-using Layer.Core.Concrete.Entities;
+﻿using Layer.Core.Concrete.DTO_s;
 using Layer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -70,7 +67,7 @@ namespace Layer.Web.Controllers
             return View(productDto);
         }
 
-        public async Task<IActionResult> Remove(int id) 
+        public async Task<IActionResult> Remove(int id)
         {
             await _productApiService.RemoveAsync(id);
             return RedirectToAction(nameof(Index));

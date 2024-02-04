@@ -14,14 +14,14 @@ namespace Layer.Web.Services
 
         public async Task<List<ProductWithCategoryDto>> GetProductsWithCategoryAsync()
         {
-            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<ProductWithCategoryDto>>>("products/GetProductsWithCategoryAsync");
+            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<ProductWithCategoryDto>>>("Products/GetProductsWithCategory");
 
             return response.Data;
         }
 
         public async Task<ProductDto> GetByIdAsync(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<ProductDto>>($"products/{id}");
+            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<ProductDto>>($"Products/{id}");
 
             return response.Data;
         }
@@ -52,6 +52,6 @@ namespace Layer.Web.Services
             return response.IsSuccessStatusCode;
         }
 
-        
+
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Layer.Caching;
 using Layer.Core.Abstract.Repositories;
 using Layer.Core.Abstract.Services;
 using Layer.Core.Abstract.UnitOfWorks;
@@ -39,7 +38,7 @@ namespace Layer.API.Modules
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<ProductServiceWithCaching>().As<IProductService>().InstancePerLifetimeScope();
+            // builder.RegisterType<ProductServiceWithCaching>().As<IProductService>().InstancePerLifetimeScope();
         }
     }
 }
